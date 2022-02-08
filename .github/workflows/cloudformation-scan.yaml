@@ -11,7 +11,7 @@ on:
 jobs:
   promote:
     name: "Scan Cloudformation"
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     container: 
       image: ghcr.io/bmurray3/docker-terraform:main
     steps:
