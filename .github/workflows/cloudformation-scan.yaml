@@ -1,0 +1,23 @@
+# -----------------------------------------------------------------------------
+# CfSec scan workflow
+# -----------------------------------------------------------------------------
+
+name: CfSec security scan
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  promote:
+    name: "Scan Cloudformation"
+    runs-on: self-hosted
+    container: 
+      image: ghcr.io/bmurray3/docker-terraform:main
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cloudformation Scan
+        id: security
+        uses: bmurray3/action-cloudformation-cfsec@main
